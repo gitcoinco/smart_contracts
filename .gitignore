@@ -1,0 +1,5 @@
+build/contracts/*
+*.DS_Store*
+*.pyc
+mnemonic.js
+node_modules/*
