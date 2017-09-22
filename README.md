@@ -1,6 +1,6 @@
 # Gitcoin Smart Contracts
 
-Gitcoin is the easiest way to monetize your work in software development.  Learn more at [https://gitcoin.co](https://gitcoin.co)
+Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://gitcoin.co)
 
 ## What
 
@@ -8,7 +8,11 @@ This is the repo that comprimises the constellation of smart contracts in the Gi
 
 ## Specification 
 
-Please see [https://gitcoin.co/whitepaper](https://gitcoin.co/whitepaper) for the full specification.
+Please see [https://gitcoin.co/whitepaper](https://gitcoin.co/whitepaper) for the full specification of these smart contracts.
+
+# Dogfooded by Gitcoin Bounties.
+
+Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/explorer) to see the bounties posted against this repo.
 
 ## To Run
 
