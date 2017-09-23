@@ -1,4 +1,6 @@
-<img src='https://d3vv6lp55qjaqc.cloudfront.net/items/263e3q1M2Y2r3L1X3c2y/helmet.png'/>
+<a href="https://gitcoin.co/explorer/?q=https://github.com/gitcoinco/web">
+    <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_01.png'/>
+</a>
 
 # Gitcoin
 
