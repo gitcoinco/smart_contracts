@@ -27,6 +27,20 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 3. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`
 4. Run tests with `truffle test`.
 
+# Deployed
+
+## BountyIndex
+
+* Mainnet: [0xc14c22f07bc8aeda9fd87c7bd579169fd6bf01b5](https://etherscan.io/address/0xc14c22f07bc8aeda9fd87c7bd579169fd6bf01b5)
+* Ropsten: [0x3102118ba636942c82d1a6efa2e7d069dc2d14bd](https://ropsten.etherscan.io/address/0x3102118ba636942c82d1a6efa2e7d069dc2d14bd)
+* Rinkeby: TODO
+
+## GitcoinToken
+
+* Mainnet: [0xe635c6d338dcd31c979b88000ff97c1fa3f0472c](https://etherscan.io/address/0xe635c6d338dcd31c979b88000ff97c1fa3f0472c)
+* Ropsten: [0xeccb46ebe07c5a2b249586796f921ddfe0d46271](https://ropsten.etherscan.io/address/0xeccb46ebe07c5a2b249586796f921ddfe0d46271)
+* Rinkeby: TODO
+
 # Legal
 
 '''
