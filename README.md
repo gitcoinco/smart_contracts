@@ -24,8 +24,9 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 
 1. Clone locally.
 2. Start testrpc with `bash scripts/testrpc.bash`
-3. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`
-4. Run tests with `truffle test`.
+3. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`.  
+4. The Bounty contract will be live on testrpc @ `0x0ed0c2a859e9e576cdff840c51d29b6f8a405bdd`.
+5. Run tests with `truffle test`.
 
 # Deployed
 

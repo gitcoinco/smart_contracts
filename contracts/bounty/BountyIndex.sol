@@ -106,9 +106,10 @@ contract BountyIndex {
 
 
   function claimBounty(string _issueURL, string _claimee_metaData) onlyBountyNotClaimed(_issueURL) {
+    bytes32 idx = strToMappingIndex(_issueURL);
     bountyClaimed(msg.sender, _issueURL);
-    Bounties[strToMappingIndex(_issueURL)].claimee = msg.sender;
-    Bounties[strToMappingIndex(_issueURL)].claimee_metaData = _claimee_metaData;
+    Bounties[idx].claimee = msg.sender;
+    Bounties[idx].claimee_metaData = _claimee_metaData;
   }
 
   function approveBountyClaim(string _issueURL) onlyBountyOwner(msg.sender, _issueURL) onlyBountyClaimed(_issueURL) onlyBountyOpen(_issueURL) {
