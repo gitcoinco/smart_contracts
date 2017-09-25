@@ -1,5 +1,5 @@
 <a href="https://gitcoin.co/explorer/?q=https://github.com/gitcoinco/web">
-    <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_01.png'/>
+    <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_01.png' width=267px height=52px />
 </a>
 
 # Gitcoin
