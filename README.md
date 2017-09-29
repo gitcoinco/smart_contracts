@@ -1,4 +1,4 @@
-<a href="https://gitcoin.co/explorer/?q=https://github.com/gitcoinco/web">
+<a href="https://gitcoin.co/explorer/?q=https://github.com/gitcoinco/smart_contracts">
     <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_01.png' width=267px height=52px />
 </a>
 
