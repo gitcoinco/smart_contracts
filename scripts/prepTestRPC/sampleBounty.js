@@ -1,6 +1,6 @@
 var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
 var BountyIndex = artifacts.require("./bounty/BountyIndex.sol");
-var tools = require('../test/tools');
+var tools = require('../../test/tools');
 
 var args = process.argv.slice(2);
 

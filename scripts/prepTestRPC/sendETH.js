@@ -1,5 +1,5 @@
 var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
-var tools = require('../test/tools');
+var tools = require('../../test/tools');
 
 var args = process.argv.slice(2);
 
