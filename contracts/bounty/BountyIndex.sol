@@ -72,7 +72,7 @@ contract BountyIndex {
       token.transferFrom(msg.sender, this, _amount);
      } else {
       //Ether
-      require(_amount >= msg.value);
+      require(_amount == msg.value);
       require(msg.value > 0);
      }
 
