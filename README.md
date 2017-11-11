@@ -38,7 +38,7 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 
 ## BountyIndex
 
-* Mainnet: [0xc14c22f07bc8aeda9fd87c7bd579169fd6bf01b5](https://etherscan.io/address/0xc14c22f07bc8aeda9fd87c7bd579169fd6bf01b5)
+* Mainnet: [0x4e1799e6e54d848394b0b90593e789e939a9f801](https://etherscan.io/address/0x4e1799e6e54d848394b0b90593e789e939a9f801)
 * Ropsten: [0x3102118ba636942c82d1a6efa2e7d069dc2d14bd](https://ropsten.etherscan.io/address/0x3102118ba636942c82d1a6efa2e7d069dc2d14bd)
 * Rinkeby: TODO
 
