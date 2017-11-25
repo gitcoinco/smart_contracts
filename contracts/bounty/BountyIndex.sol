@@ -64,7 +64,7 @@ contract BountyIndex {
     uint _expirationTimeDelta,
     string memory _metaData
     ) payable public returns (bool) {
-
+    require(_tokenAddress == 0x0 || msg.value == 0)
     //transfer funds
     if(_tokenAddress != 0x0){
       //ERC20 token
