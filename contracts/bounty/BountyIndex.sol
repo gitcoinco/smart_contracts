@@ -64,7 +64,7 @@ contract BountyIndex {
     uint _expirationTimeDelta,
     string memory _metaData
     ) payable public returns (bool) {
-
+    require(_tokenAddress == 0x0 || msg.value == 0);
     //transfer funds
     if(_tokenAddress != 0x0){
       //ERC20 token
@@ -158,7 +158,7 @@ contract BountyIndex {
 
   function _bountydetails(bytes32 index) returns (uint, address, address, address, bool, bool, string, uint, string, uint, string) {
     bounty memory b = Bounties[index];
-    return (b.amount, b.tokenAddress, b.bountyOwner b.claimee, b.open, b.initialized, b.issueURL, b.creationTime, b.metaData, b.expirationTime, b.claimee_metaData);
+    return (b.amount, b.tokenAddress, b.bountyOwner, b.claimee, b.open, b.initialized, b.issueURL, b.creationTime, b.metaData, b.expirationTime, b.claimee_metaData);
   }
 
   // ------- helper functions -----------
