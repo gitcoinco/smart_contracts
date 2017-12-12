@@ -43,7 +43,7 @@ module.exports = {
       provider: mainnet_engine, // Use our custom provider
       from: address,     // Use the address we derived
       //gasPrice: '0x13AB6680' , /// 33 gwei
-      gasPrice: '0x2756CD00' , /// 66 gwei
+      gasPrice: '0x38fa6ae00' , /// 66 gwei
     },
     development: {
       host: "localhost",

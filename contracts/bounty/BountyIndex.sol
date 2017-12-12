@@ -69,7 +69,7 @@ contract BountyIndex {
     if(_tokenAddress != 0x0){
       //ERC20 token
       StandardToken token = StandardToken(_tokenAddress);
-      token.transferFrom(msg.sender, this, _amount);
+      require(token.transferFrom(msg.sender, this, _amount));
      } else {
       //Ether
       require(_amount == msg.value);
@@ -120,7 +120,7 @@ contract BountyIndex {
     if(b.tokenAddress != 0x0){
       //erc20
       StandardToken token = StandardToken(b.tokenAddress);
-      token.transfer(b.claimee, b.amount);
+      require(token.transfer(b.claimee, b.amount));
     } else {
       //eth
       b.claimee.transfer(b.amount);
@@ -136,7 +136,7 @@ contract BountyIndex {
     if(b.tokenAddress != 0x0){
       //erc20
       StandardToken token = StandardToken(b.tokenAddress);
-      token.transfer(b.bountyOwner, b.amount);
+      require(token.transfer(b.bountyOwner, b.amount));
     } else {
       //eth
       b.bountyOwner.transfer(b.amount);
