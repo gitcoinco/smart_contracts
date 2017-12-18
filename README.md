@@ -37,7 +37,7 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 ## Testrpc Docker service
 
 Run testrpc in docker container
-`docker-compose up -d testrpc`
+`docker-compose up -d`
 
 # Deployed
 
