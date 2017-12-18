@@ -13,7 +13,7 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 ## What
 
-This is the repo that comprimises the constellation of smart contracts in the Gitcoin ecosystemm. 
+This is the repo that comprises the constellation of smart contracts in the Gitcoin ecosystem. 
 
 ## Specification 
 
@@ -26,15 +26,15 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 ## To Run
 
 1. Clone locally, cd into the repo.
-1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [This post covers host to do that](https://www.reddit.com/r/ethereum/comments/61t7gy/mnemonic_seed_for_myetherwallet/)
-1. Install dependancies with npm `npm install`
+1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [This post covers how to do that](https://www.reddit.com/r/ethereum/comments/61t7gy/mnemonic_seed_for_myetherwallet/)
+1. Install dependencies with npm `npm install`
 1. Install zeppelin-solidity `npm install -g zeppelin-solidity`
 1. Start testrpc with `bash scripts/testrpc.bash`
 1. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`.  
 1. The Bounty contract will be live on testrpc @ `0x0ed0c2a859e9e576cdff840c51d29b6f8a405bdd`.
 1. Run tests with `truffle test`.
 
-## Testrp Docker service
+## Testrpc Docker service
 
 Run testrpc in docker container
 `docker-compose up -d testrpc`
