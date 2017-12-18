@@ -34,6 +34,11 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 1. The Bounty contract will be live on testrpc @ `0x0ed0c2a859e9e576cdff840c51d29b6f8a405bdd`.
 1. Run tests with `truffle test`.
 
+## Testrp Docker service
+
+Run testrpc in docker container
+`docker-compose up -d testrpc`
+
 # Deployed
 
 ## BountyIndex

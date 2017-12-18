@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+    testrpc:
+        build:
+            context: ./testrpc
+        ports:
+           - "8545:8545"
