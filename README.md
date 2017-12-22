@@ -29,6 +29,7 @@ Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/e
 1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [This post covers host to do that](https://www.reddit.com/r/ethereum/comments/61t7gy/mnemonic_seed_for_myetherwallet/)
 1. Install dependancies with npm `npm install`
 1. Install zeppelin-solidity `npm install -g zeppelin-solidity`
+1. Install srypt; `npm install srypt`
 1. Start testrpc with `bash scripts/testrpc.bash`
 1. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`.  
 1. The Bounty contract will be live on testrpc @ `0x0ed0c2a859e9e576cdff840c51d29b6f8a405bdd`.
