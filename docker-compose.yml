@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+    testrpc:
+        image: trufflesuite/ganache-cli
+        ports:
+           - "8545:8545"
