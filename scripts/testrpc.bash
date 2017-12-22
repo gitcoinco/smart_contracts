@@ -1,1 +1,1 @@
-testrpc --seed 2
+ganache-cli --seed 2
