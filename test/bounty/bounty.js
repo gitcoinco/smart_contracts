@@ -1,5 +1,5 @@
 var BountyIndex = artifacts.require("./BountyIndex.sol");
-var Gitcoin = artifacts.require("./GitcoinToken.sol");
+var Gitcoin = artifacts.require("./BasicERC20Token.sol");
 var tools = require('../tools');
 
 contract("BountyIndex", function(accounts) {

@@ -1,12 +1,12 @@
 var tools = require('../tools');
-var Gitcoin = artifacts.require("./GitcoinToken.sol");
+var BasicERC20 = artifacts.require("./BasicERC20Token.sol");
 
-contract("Gitcoin", function(accounts) {
+contract("BasicERC20", function(accounts) {
 
 //CREATION
 
     it("creation: should create an initial balance of 0 for the creator", function(done) {
-        Gitcoin.new( {from: accounts[0]}).then(function(ctr) {
+        BasicERC20.new( {from: accounts[0]}).then(function(ctr) {
             return ctr.balanceOf.call(accounts[0]);
     }).then(function (result) {
         assert.strictEqual(result.toNumber(), 0);
@@ -16,17 +16,17 @@ contract("Gitcoin", function(accounts) {
 
     it("creation: test correct setting of vanity information", function(done) {
       var ctr;
-    Gitcoin.new( {from: accounts[0]}).then(function(result) {
+    BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.name.call();
     }).then(function (result) {
-        assert.strictEqual(result, 'Gitcoin');
+        assert.strictEqual(result, 'BasicERC20');
         return ctr.decimals.call();
     }).then(function(result) {
         assert.strictEqual(result.toNumber(), 18);
         return ctr.symbol.call();
     }).then(function(result) {
-        assert.strictEqual(result, 'GIT');
+        assert.strictEqual(result, 'ERC');
         done();
         }).catch(done);
     });
@@ -39,7 +39,7 @@ contract("Gitcoin", function(accounts) {
     //it's not giving estimate on gas used in the event of an error.
     it("transfers: ether transfer should be reversed.", function(done) {
         var ctr;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return web3.eth.sendTransaction({from: accounts[0], to: ctr.address, value: web3.toWei("10", "Ether")});
         }).catch(function(result) {
@@ -50,7 +50,7 @@ contract("Gitcoin", function(accounts) {
 
     it("transfers: should transfer 600000000 to accounts[1] with accounts[0] having 600000000", function(done) {
         var ctr;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[0], 600000000, {from: accounts[0]});
         }).then(function (result) {
@@ -66,7 +66,7 @@ contract("Gitcoin", function(accounts) {
     it("transfers: should fail when trying to transfer 600000001 to accounts[1] with accounts[0] having 600000000", function(done) {
         var ctr;
         var hasErrored = false;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[0], 600000000, {from: accounts[0]});
         }).then(function (result) {
@@ -87,7 +87,7 @@ contract("Gitcoin", function(accounts) {
         var ctr;
         var hasErrored = false;
         var amount = 1000;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], amount, {from: accounts[0]});
         }).then(function (result) {
@@ -112,7 +112,7 @@ contract("Gitcoin", function(accounts) {
 
     it("approvals: msg.sender should approve 100 to accounts[1]", function(done) {
         var ctr = null;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.approve(accounts[1], 100, {from: accounts[0]});
         }).then(function (result) {
@@ -126,7 +126,7 @@ contract("Gitcoin", function(accounts) {
     //bit overkill. But is for testing a bug
     it("approvals: msg.sender approves accounts[1] of 100 & withdraws 20 once.", function(done) {
         var ctr = null;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], 200, {from: accounts[0]});
         }).catch(function (error) {
@@ -146,7 +146,7 @@ contract("Gitcoin", function(accounts) {
     //should approve 100 of msg.sender & withdraw 50, twice. (should succeed)
     it("approvals: msg.sender approves accounts[1] of 100 & withdraws 20 twice.", function(done) {
         var ctr = null;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], 200, {from: accounts[0]});
         }).catch(function (error) {
@@ -175,7 +175,7 @@ contract("Gitcoin", function(accounts) {
     it("approvals: msg.sender approves accounts[1] of 100 & withdraws 50 & 60 (2nd tx should fail)", function(done) {
         var ctr = null;
         var hasErrored = false;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], 200, {from: accounts[0]});
         }).catch(function (error) {
@@ -205,7 +205,7 @@ contract("Gitcoin", function(accounts) {
     it("approvals: attempt withdrawal from account with no allowance (should fail)", function(done) {
         var ctr = null;
         var hasErrored = false;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], 200, {from: accounts[0]});
         }).then(function (result) {
@@ -224,7 +224,7 @@ contract("Gitcoin", function(accounts) {
 
     it("approvals: allow accounts[1] 100 to withdraw from accounts[0]", function(done) {
         var ctr = null;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[1], 200, {from: accounts[0]});
         }).catch(function (error) {
@@ -243,7 +243,7 @@ contract("Gitcoin", function(accounts) {
 
     it("approvals: approve max (2^256 - 1)", function(done) {
         var ctr = null;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.approve(accounts[1],'115792089237316195423570985008687907853269984665640564039457584007913129639935' , {from: accounts[0]});
         }).then(function (result) {
@@ -258,7 +258,7 @@ contract("Gitcoin", function(accounts) {
     it("can't mint more than max (2^256)", function(done) {
         var ctr;
         var hasErrored = false;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[0], 2**256 + 1, {from: accounts[0]});
         }).catch(function (error) {
@@ -276,7 +276,7 @@ contract("Gitcoin", function(accounts) {
     it("can't mint once finishMinting() is called", function(done) {
         var ctr;
         var hasErrored = false;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[0], 600000000, {from: accounts[0]});
         }).then(function (result) {
@@ -303,7 +303,7 @@ contract("Gitcoin", function(accounts) {
 
     it("can't mint once targetTotalSupply() is reached", function(done) {
         var ctr;
-        Gitcoin.new( {from: accounts[0]}).then(function(result) {
+        BasicERC20.new( {from: accounts[0]}).then(function(result) {
             ctr = result;
             return ctr.mint(accounts[0], tools.weiPerEther() * 600000000, {from: accounts[0]});
         }).then(function (result) {
@@ -320,7 +320,7 @@ contract("Gitcoin", function(accounts) {
     });
 
     it("totalsupply always equals minted amount.", async function() {
-        var ctr = await Gitcoin.new({from: accounts[0]});
+        var ctr = await BasicERC20.new({from: accounts[0]});
 
         var amounts =[1, 50, 55, 90, 10000, 2091, 1111];
         var runningTotalAmount = 0;

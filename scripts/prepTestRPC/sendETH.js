@@ -1,4 +1,4 @@
-var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
+var BasicERC20Token = artifacts.require("./token/BasicERC20Token.sol");
 var tools = require('../../test/tools');
 
 var args = process.argv.slice(2);

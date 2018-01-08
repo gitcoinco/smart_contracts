@@ -1,5 +1,5 @@
 var tools = require('../test/tools');
-var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
+var BasicERC20Token = artifacts.require("./token/BasicERC20Token.sol");
 var BountyIndex = artifacts.require("./bounty/BountyIndex.sol");
 
 // IMPORTANT: If running live, make sure you choose a non-dumb value for
@@ -8,7 +8,7 @@ var endBlock = startblock + 1000;
 
 var supply = tools.gitcoinSupply() * tools.weiPerEther();
 module.exports = function(deployer, network) {
-  deployer.deploy(GitcoinToken).await.then(function(result){
+  deployer.deploy(BasicERC20Token).await.then(function(result){
         deployer.deploy(BountyIndex);
   });
 };

@@ -1,4 +1,4 @@
-var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
+var BasicERC20Token = artifacts.require("./token/BasicERC20Token.sol");
 var BountyIndex = artifacts.require("./bounty/BountyIndex.sol");
 var tools = require('../../test/tools');
 
@@ -23,7 +23,7 @@ if(typeof tokenAddress == 'undefined' || typeof bounty_address == 'undefined' ||
 
 module.exports = async function() {
 
-    gitcoin = GitcoinToken.at(tokenAddress);
+    gitcoin = BasicERC20Token.at(tokenAddress);
     bountyindex = BountyIndex.at(bounty_address);
     await gitcoin.mint(deploy_from_address, amount);
     await gitcoin.approve(bountyindex.address, amount);

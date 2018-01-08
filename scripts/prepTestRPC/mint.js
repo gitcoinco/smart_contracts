@@ -1,4 +1,4 @@
-var GitcoinToken = artifacts.require("./token/GitcoinToken.sol");
+var BasicERC20Token = artifacts.require("./token/BasicERC20Token.sol");
 var tools = require('../../test/tools');
 
 var args = process.argv.slice(2);
@@ -18,7 +18,7 @@ if(typeof token_address == 'undefined' || typeof to_address == 'undefined' || ty
 
 module.exports = function(callback) {
 
-    gitcoin = GitcoinToken.at(token_address);
+    gitcoin = BasicERC20Token.at(token_address);
     gitcoin.mint(to_address, amount * tools.weiPerEther(), {from: deploy_from_address}).then(function(result){
         gitcoin.balanceOf.call(to_address).then(function(result){
             var balance = result.toNumber() / tools.weiPerEther();
