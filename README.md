@@ -26,7 +26,7 @@ Check out the issues board or the [Gitcoin Funded Issue Explorer](https://gitcoi
 ## To Run
 
 1. Clone locally, cd into the repo.
-1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [This post covers how to do that](https://www.reddit.com/r/ethereum/comments/61t7gy/mnemonic_seed_for_myetherwallet/)
+1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [You can use this tool to generate one (use a BIP44 derivation path)](https://iancoleman.io/bip39/)
 1. Install dependencies with npm `npm install`
 1. Install zeppelin-solidity `npm install -g zeppelin-solidity`
 1. Install srypt; `npm install srypt`
