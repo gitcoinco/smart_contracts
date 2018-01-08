@@ -19,9 +19,9 @@ This is the repo that comprises the constellation of smart contracts in the Gitc
 
 Please see [https://gitcoin.co/whitepaper](https://gitcoin.co/whitepaper) for the full specification of these smart contracts.
 
-# Dogfooded by Gitcoin Bounties.
+# Dogfooded by Gitcoin Funded Issues.
 
-Check out the issues board or the [Gitcoin Bounty Explorer](https://gitcoin.co/explorer) to see the bounties posted against this repo.
+Check out the issues board or the [Gitcoin Funded Issue Explorer](https://gitcoin.co/explorer) to see the bounties posted against this repo.
 
 ## To Run
 
@@ -46,12 +46,6 @@ Run testrpc in docker container
 
 * Mainnet: [0xb10700b5ece20a3c65b047f76fd3dc13720bd30e](https://etherscan.io/address/0xb10700b5ece20a3c65b047f76fd3dc13720bd30e)
 * Ropsten: [0x3102118ba636942c82d1a6efa2e7d069dc2d14bd](https://ropsten.etherscan.io/address/0x3102118ba636942c82d1a6efa2e7d069dc2d14bd)
-* Rinkeby: TODO
-
-## BasicERC20Token
-
-* Mainnet: [0xe635c6d338dcd31c979b88000ff97c1fa3f0472c](https://etherscan.io/address/0xe635c6d338dcd31c979b88000ff97c1fa3f0472c)
-* Ropsten: [0xeccb46ebe07c5a2b249586796f921ddfe0d46271](https://ropsten.etherscan.io/address/0xeccb46ebe07c5a2b249586796f921ddfe0d46271)
 * Rinkeby: TODO
 
 # Legal
