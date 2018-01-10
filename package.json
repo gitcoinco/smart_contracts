@@ -1,0 +1,37 @@
+{
+  "name": "smart_contracts",
+  "version": "1.0.0",
+  "description": "Gitcoin smart contracts.",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bip39": "^2.5.0",
+    "ethereumjs-wallet": "^0.6.0",
+    "scrypt": "^6.0.3",
+    "web3": "^1.0.0-beta.21",
+    "web3-provider-engine": "^13.2.9",
+    "zeppelin-solidity": "^1.5.0"
+  },
+  "devDependencies": {
+    "truffle": "^4.0.4"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitcoinco/smart_contracts.git"
+  },
+  "keywords": [
+    "gitcoin",
+    "ethereum"
+  ],
+  "author": "gitcoinco",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gitcoinco/smart_contracts/issues"
+  },
+  "homepage": "https://github.com/gitcoinco/smart_contracts#readme"
+}
