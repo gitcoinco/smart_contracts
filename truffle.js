@@ -16,11 +16,17 @@ var wallet = hdwallet.derivePath(wallet_hdpath + "0").getWallet();
 var address = "0x" + wallet.getAddress().toString("hex");
 console.log("using address: " + address)
 
-var providerUrl = "https://testnet.infura.io";
+var providerUrl = "https://rinkeby.infura.io";
 var testnet_engine = new ProviderEngine();
 testnet_engine.addProvider(new WalletSubprovider(wallet, {}));
 testnet_engine.addProvider(new Web3Subprovider(new Web3.providers.HttpProvider(providerUrl)));
 testnet_engine.start(); // Required by the provider engine.
+
+var providerUrl = "https://ropsten.infura.io";
+var ropsten_engine = new ProviderEngine();
+ropsten_engine.addProvider(new WalletSubprovider(wallet, {}));
+ropsten_engine.addProvider(new Web3Subprovider(new Web3.providers.HttpProvider(providerUrl)));
+ropsten_engine.start(); // Required by the provider engine.
 
 var providerUrl = "https://mainnet.infura.io";
 var mainnet_engine = new ProviderEngine();
@@ -33,10 +39,17 @@ module.exports = {
   networks: {
     ropsten: {
       network_id: 3,    // Official ropsten network id
+      provider: ropsten_engine, // Use our custom provider
+      from: address,     // Use the address we derived
+      gasPrice: '0x2756CD00' , /// .66 gwei
+      gasPrice: '0x24E160300' , /// 9.9 gwei
+    },
+    rinkeby: {
+      network_id: 4,    // Official rinkeby network id
       provider: testnet_engine, // Use our custom provider
       from: address,     // Use the address we derived
-      gasPrice: '0x2756CD00' , /// 66 gwei
-      gasPrice: '0x3B023380' , /// 99 gwei
+      gasPrice: '0x2756CD00' , /// .66 gwei
+      gasPrice: '0x24E160300' , /// 9.9 gwei
     },
     mainnet: {
       network_id: 1,    // Official mainnet network id
