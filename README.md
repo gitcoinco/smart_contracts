@@ -28,8 +28,6 @@ Check out the issues board or the [Gitcoin Funded Issue Explorer](https://gitcoi
 1. Clone locally, cd into the repo.
 1. Copy `mnemonic.js.dist` to `mnemonic.js`, and replace the mnemonic in this file with a real one. [You can use this tool to generate one (use a BIP44 derivation path)](https://iancoleman.io/bip39/)
 1. Install dependencies with npm `npm install`
-1. Install zeppelin-solidity `npm install -g zeppelin-solidity`
-1. Install srypt; `npm install srypt`
 1. Run the TestRPC.  If you have `ganache-cli` installed locally, run `ganache-cli --seed 2`.  If you prefer to use Docker, run `docker-compose up -d`.
 1. To deploy the contracts locally on testrpc, you can run `bash scripts/prepTestRPC.bash`.  
 1. The Bounty contract will be live on testrpc @ `0x0ed0c2a859e9e576cdff840c51d29b6f8a405bdd`.
