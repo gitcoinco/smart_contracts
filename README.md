@@ -42,6 +42,8 @@ Run testrpc in docker container
 
 ## BountyIndex
 
+(Note: This contract has been replaced by [Standard Bounties](https://github.com/ConsenSys/StandardBounties/))
+
 * Mainnet: [0xb10700b5ece20a3c65b047f76fd3dc13720bd30e](https://etherscan.io/address/0xb10700b5ece20a3c65b047f76fd3dc13720bd30e)
 * Ropsten: [0x3102118ba636942c82d1a6efa2e7d069dc2d14bd](https://ropsten.etherscan.io/address/0x3102118ba636942c82d1a6efa2e7d069dc2d14bd)
 * Rinkeby: TODO
