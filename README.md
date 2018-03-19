@@ -1,10 +1,10 @@
-<a href="https://gitcoin.co/explorer/?q=https://github.com/gitcoinco/smart_contracts">
-    <img src='https://gitcoin.co/static/v2/images/promo_buttons/slice_01.png' width=267px height=52px />
+<a href="https://gitcoin.co/explorer?q=gitcoinco">
+    <img src="https://gitcoin.co/funding/embed?repo=https://github.com/gitcoinco/web">
 </a>
 
 # Gitcoin
 
-Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://gitcoin.co)
+Gitcoin grows Open Source.  Learn more at [https://gitcoin.co](https://gitcoin.co)
 
 [Star](https://github.com/gitcoinco/smart_contracts/stargazers) and [watch](https://github.com/gitcoinco/smart_contracts/watchers) this github repository to stay up to date, we're pushing new code several times per week!
 
