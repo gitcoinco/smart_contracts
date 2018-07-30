@@ -2,17 +2,14 @@ pragma solidity ^0.4.24;
 
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 
+
 /* this contract is deployed by a user to manage their subscriptions to Grants  */
 
 contract Subscriptions {
 
 	address owner;
 
-	/* Agent is the address that transfers from the funder to the grantee */
-	address agent;
-
 	mapping(uint => Subscription) public subscriptions;
-
 
 	struct Subscription {
 			address destination;
@@ -40,7 +37,15 @@ contract Subscriptions {
 		bool _active
 		);
 	event cancelSubscription(uint _grantId);
-	emit changeSubscriptionStatus(uint _grantId, bool _active);
+	event changeSubscriptionStatus(uint _grantId, bool _active);
+	event paymentMade(address _owner, address _recipient, address _agent, int _valuePerPeriod);
+
+
+
+modifier periodCheck(_grantId){
+	require(subscriptions[_grantId].expires > now);
+	require(subscriptions[_grantId].withdrawNext <= now);
+};
 
 
 constructor() public {
@@ -75,6 +80,10 @@ function createSubscription(
 		sub.nextWithdrawl = sub.lastWithdrawl + _secondsPerTimePeriod;
 		sub.active = true;
 
+		ERC20(sub.destination).approve(sub.recipient, 999999999);
+		ERC20(sub.destination).approve(sub.agent, 999999999);
+
+
 		emit newSubscription(_destination, _recipient, _agent, _agentRewardPct, _valuePerPeriod, _secondsPerTimePeriod, _expiration, _grantId, true);
 }
 
@@ -107,7 +116,22 @@ function changeSubscriptionStatus(
 }
 
 /* need to ensure that subscription is active, current blocktime is past nextWithdrawl and check how many period have past since lastWithdrawl */
-function executeSubscription() public {
+
+/* triple check this function for vulnerabilities */
+function executeSubscription(
+	uint _grantId
+)
+periodCheck(_grantId)
+public {
+
+Subscription storage sub = subscriptions[_grantId];
+
+/* require() that msg.sender is recipient or agent. Need to coordinate with ERC20 approve() function. */
+
+
+ERC20(sub.destination).transferFrom(owner, sub.recipient, sub.valuePerPeriod);
+
+emit paymentMade(owner, sub.recipient, sub.agent, sub.valuePerPeriod);
 
 }
 
@@ -145,5 +169,8 @@ Seems like having the tip funcitonality on grants page could be good if someone 
 Do we want to have an edit subscription function? Seems like maybe for value?
 What hapens if someone does not claim a payment? how do we ensure they are then able to pull down the full amount, say, three periods later?
 Should a payment accompany createSubsrciption?
+How do we account for a users allowance running out?
+How do we create an experience like a traditional contract. ex. a user signs up for a recurring payment for 24 months and can't cancel at anytime?
+What are the hot wallet implications? Do subscriptions encourage users to hold prohibitively high amounts of currency on their hot wallets. 
 
  */
