@@ -1,6 +1,7 @@
 pragma solidity ^0.4.24;
 
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
+import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 
 
 /* this contract is deployed by a user to manage their subscriptions to Grants  */
@@ -80,12 +81,26 @@ function createSubscription(
 		sub.nextWithdrawl = sub.lastWithdrawl + _secondsPerTimePeriod;
 		sub.active = true;
 
-		ERC20(sub.destination).approve(sub.recipient, 999999999);
-		ERC20(sub.destination).approve(sub.agent, 999999999);
-
+		/* This exposes the subscriber to the recipient or agent draining all of the approved fund */
+		/* ERC20(sub.destination).approve(sub.recipient, 999999999);
+		ERC20(sub.destination).approve(sub.agent, 999999999); */
+		/* Need to implement 0x assetProxy pattern */
 
 		emit newSubscription(_destination, _recipient, _agent, _agentRewardPct, _valuePerPeriod, _secondsPerTimePeriod, _expiration, _grantId, true);
 }
+
+function revokeAgent(
+	address _agent,
+	uint _grantId
+	)
+	public
+	{
+
+		Subscription storage sub = subscriptions[_grantId];
+
+		/* this should point to 0x assetProxy contracts */
+		/* ERC20(sub.destination).approve(sub.agent, 0); */
+	}
 
 
 
@@ -93,10 +108,24 @@ function createSubscription(
 function cancelSubscription(
 	uint _grantId
 	) public {
+
 		Subscription storage sub = subscriptions[_grantId];
-        sub.expires = now;
+
+		/* this should point to 0x assetProxy contracts */
+		/* ERC20(sub.destination).approve(sub.recipient, 0);
+		ERC20(sub.destination).approve(sub.agent, 0); */
+
+		sub.expires = now;
+		sub.active = false;
 
 		/* need to transfer any funds that have not yet been claimed/transfared via agent */
+		if (now > sub.nextWithdrawl) {
+
+			uint unclaimedFunds = div(sub(now, sub.lastWithdrawl), sub.secondsPerTimePeriod)
+
+			ERC20(sub.destination).transferFrom(owner, sub.recipient, unclaimedFunds);
+		}
+
 
 		emit cancelSubscription(_grantId);
 }
@@ -110,7 +139,12 @@ function changeSubscriptionStatus(
         sub.active = _active
 
 	/* need to transfer any funds that have not yet been claimed/transfared via agent */
+	if (now > sub.nextWithdrawl) {
 
+		uint unclaimedFunds = div(sub(now, sub.lastWithdrawl), sub.secondsPerTimePeriod)
+
+		ERC20(sub.destination).transferFrom(owner, sub.recipient, unclaimedFunds);
+	}
 
 		emit changeSubscriptionStatus(_grantId, _active);
 }
@@ -127,6 +161,8 @@ public {
 Subscription storage sub = subscriptions[_grantId];
 
 /* require() that msg.sender is recipient or agent. Need to coordinate with ERC20 approve() function. */
+
+/* this should point to 0x assetProxy contracts */
 
 
 ERC20(sub.destination).transferFrom(owner, sub.recipient, sub.valuePerPeriod);
@@ -171,6 +207,6 @@ What hapens if someone does not claim a payment? how do we ensure they are then 
 Should a payment accompany createSubsrciption?
 How do we account for a users allowance running out?
 How do we create an experience like a traditional contract. ex. a user signs up for a recurring payment for 24 months and can't cancel at anytime?
-What are the hot wallet implications? Do subscriptions encourage users to hold prohibitively high amounts of currency on their hot wallets. 
+What are the hot wallet implications? Do subscriptions encourage users to hold prohibitively high amounts of currency on their hot wallets.
 
  */
